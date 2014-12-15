@@ -50,12 +50,15 @@ gem "draper"
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
+  gem "bullet"
 end
 
 group :development, :test do
   gem "pry-rails"
   gem "pry-doc"
   gem "pry-byebug"
+  gem 'faker'
+  gem 'populator'
 end
 
 group :development, :test do
@@ -66,3 +69,6 @@ group :development, :test do
   gem "rb-fsevent", require: false
   gem "guard-rspec"
 end
+
+gem 'kaminari'
+gem 'chosen-rails'

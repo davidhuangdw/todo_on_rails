@@ -6,27 +6,27 @@
     New User
   %h1 Listing users
 
+= paginate @users
 .table-responsive
   %table.table.table-striped.table-bordered.table-hover
     %thead
       %tr
         %th Email
+        %th Username
         %th Password digest
         %th Auth token
-        %th Username
         %th Bio
-        %th
         %th
         %th
 
     %tbody
       - @users.each do |user|
         %tr
-          %td= user.email
+          %td=link_to user.email, user
+          %td= user.username
           %td= user.password_digest
           %td= user.auth_token
-          %td= user.username
           %td= user.bio
-          %td= link_to 'Show', user
+          -#%td= link_to 'Show', user
           %td= link_to 'Edit', edit_user_path(user)
           %td= link_to 'Destroy', user, :data => { confirm: 'Are you sure?' }, :method => :delete

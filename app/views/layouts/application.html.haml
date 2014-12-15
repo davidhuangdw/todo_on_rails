@@ -6,13 +6,14 @@
       %ul.nav.navbar-nav
         %li.active=link_to 'Home', root_path
         %li=link_to 'users', users_path
+        %li=link_to 'teams', teams_path
       %ul.nav.navbar-nav.navbar-right
         - if current_user
-          %li= link_to "Profile", current_user #, id: 'profile'
-          %li= link_to "Logout", logout_path  #, id:'logout'
+          %li= link_to "Profile", current_user
+          %li= link_to "Logout", logout_path
         - else
-          %li= link_to "Sign Up", sign_up_path #, id:'sign_up'
-          %li= link_to "Login", login_path #, id:'login'
+          %li= link_to "Sign Up", sign_up_path
+          %li= link_to "Login", login_path
 
     .container
       = render 'layouts/flash'
