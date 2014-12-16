@@ -1,0 +1,10 @@
+%h3 Members
+= simple_form_for @team.memberships.build, html:{class:'form-inline'}, remote:true do |f|
+  = f.association :team, as: :hidden
+  = f.input :role, collection: Membership::ROLES, label:false
+  = f.association :user, collection: @team.non_members, label_method: :username, label:false
+  = f.submit 'Add', class:'btn btn-primary'
+
+- Membership::ROLES.each do |role|
+  -#- unless memberships.empty?
+  =render 'teams/members/memberships', role:role, memberships:@team.memberships_on(role)

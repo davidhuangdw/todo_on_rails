@@ -1,8 +1,9 @@
 class TeamsController < ApplicationController
+  before_action :require_login
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
   def index
-    @teams = Team.page(params[:page])
+    @teams = Team.order('created_at desc').page(params[:page])
     respond_with @teams
   end
 
@@ -18,7 +19,7 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.new(team_params)
+    @team = current_user.create_team(team_params)
 
     respond_with do |format|
       if @team.save

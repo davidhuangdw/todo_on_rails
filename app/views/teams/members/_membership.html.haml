@@ -1,0 +1,3 @@
+%li{id:"membership#{membership.id}"}
+  = link_to membership.user.username, membership.user
+  = link_to 'Destroy', membership, :data => { confirm: 'Are you sure?' }, method: :delete, remote:true

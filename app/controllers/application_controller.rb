@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find_by(auth_token:session[:auth_token])
   end
+
+  def require_login
+    redirect_to root_url, alert:'Require login first.' unless current_user
+  end
 end
