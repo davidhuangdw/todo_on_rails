@@ -1,0 +1,1 @@
+$("#<%= @comment.html_id %>").remove()

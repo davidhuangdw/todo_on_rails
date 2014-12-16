@@ -4,10 +4,9 @@
   = link_to teams_path, :class => 'btn btn-default' do
     %span.glyphicon.glyphicon-list-alt
     Back
-  = link_to edit_team_path(@team), :class => 'btn btn-primary' do
-    %span.glyphicon.glyphicon-pencil
-    Edit
-  %h1 team: #{@team.name}
+  %h1
+    Team:
+    = best_in_place @team, :name
 
 
 .col-sm-6

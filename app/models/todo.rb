@@ -2,6 +2,7 @@ class Todo < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
   belongs_to :complete_user, class_name:'User'
+  has_many :comments, dependent: :destroy
 
   def completed=(val)
     self.complete_time = val ?
@@ -11,5 +12,6 @@ class Todo < ActiveRecord::Base
   def adjust_user(current_user)
     update(complete_user_id:current_user.id) if completed
   end
+  def html_id; "todo#{id}" end
 
 end

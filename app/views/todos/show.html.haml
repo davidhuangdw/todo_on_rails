@@ -1,22 +1,20 @@
 .page-header
-  = link_to todos_path, :class => 'btn btn-default' do
+  = link_to @todo.project, :class => 'btn btn-default' do
     %span.glyphicon.glyphicon-list-alt
-    Back
-  = link_to edit_todo_path(@todo), :class => 'btn btn-primary' do
-    %span.glyphicon.glyphicon-pencil
-    Edit
-  %h1 Show todo
+    Back to project
+  %h1
+    Task:
+    = best_in_place @todo, :name
 
-%dl.dl-horizontal
-  %dt Name:
-  %dd= @todo.name
-  %dt Project:
-  %dd= @todo.project
-  %dt User:
-  %dd= @todo.user
-  %dt Important:
-  %dd= @todo.important
-  %dt Complete time:
-  %dd= @todo.complete_time
-  %dt Comment count:
-  %dd= @todo.comment_count
+%h3 Comment
+%ul.list-unstyled#comments
+  = render @todo.comments
+
+%h1
+
+- if current_user
+  = simple_form_for current_user.comments.build, url:comments_path, remote:true do |f|
+    = f.association :todo, input_html:{value:@todo.id}, as: :hidden
+    = f.association :user, as: :hidden
+    = f.input :content
+    = f.button :submit

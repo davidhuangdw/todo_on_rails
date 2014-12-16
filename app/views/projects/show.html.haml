@@ -1,14 +1,9 @@
 - title @project.name
 .page-header
-  = link_to projects_path, :class => 'btn btn-default' do
+  = link_to @project.team, :class => 'btn btn-default' do
     %span.glyphicon.glyphicon-list-alt
-    Back
-  = link_to edit_project_path(@project), :class => 'btn btn-primary' do
-    %span.glyphicon.glyphicon-pencil
-    Edit
+    Back to team
   %h1
-    = link_to @project.team.name, @project.team
-    's Project:
     = best_in_place @project, :name
 
 = simple_form_for Todo.new, remote:true, html:{class:'form-inline'} do |f|

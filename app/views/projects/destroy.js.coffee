@@ -1,1 +1,1 @@
-$("#project<%= @project.id %>").remove()
+$("#<%= @project.html_id %>").remove()

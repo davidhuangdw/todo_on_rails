@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-  before_action :set_todo, only: [:show, :edit, :update, :destroy]
+  before_action :set_todo, only: [:edit, :update, :destroy]
 
   def index
     @todos = Todo.all
@@ -7,7 +7,8 @@ class TodosController < ApplicationController
   end
 
   def show
-    respond_with @todos
+    @todo = Todo.includes(comments: :user).find(params[:id])
+    respond_with @todo
   end
 
   def new
@@ -48,7 +49,7 @@ class TodosController < ApplicationController
 
   def destroy
     @todo.destroy
-    respond_to do |format|
+    respond_with do |format|
       format.html { redirect_to todos_url }
       format.json { head :no_content }
     end
