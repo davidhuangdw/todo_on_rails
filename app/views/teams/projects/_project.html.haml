@@ -1,3 +1,4 @@
 %li{id:"project#{project.id}"}
-  =link_to project.name, project
-  =link_to 'destroy', project, method: :delete, remote: true
+  = best_in_place project, :name
+  = link_to 'show', project
+  = link_to 'destroy', project, method: :delete, remote: true

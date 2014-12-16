@@ -72,3 +72,4 @@ end
 
 gem 'kaminari'
 gem 'chosen-rails'
+gem 'best_in_place'

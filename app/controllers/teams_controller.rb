@@ -56,7 +56,7 @@ class TeamsController < ApplicationController
 
   private
     def set_team
-      @team = Team.find(params[:id])
+      @team = Team.includes(memberships: :user).find(params[:id])
     end
 
     def team_params

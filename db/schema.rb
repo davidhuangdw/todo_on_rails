@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141216080621) do
+ActiveRecord::Schema.define(version: 20141216105411) do
 
   create_table "memberships", force: true do |t|
     t.integer  "team_id"
@@ -38,6 +38,20 @@ ActiveRecord::Schema.define(version: 20141216080621) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "todos", force: true do |t|
+    t.string   "name"
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.boolean  "important"
+    t.datetime "complete_time"
+    t.integer  "comment_count", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "todos", ["project_id"], name: "index_todos_on_project_id"
+  add_index "todos", ["user_id"], name: "index_todos_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email"

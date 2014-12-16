@@ -1,0 +1,22 @@
+.page-header
+  = link_to todos_path, :class => 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_todo_path(@todo), :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show todo
+
+%dl.dl-horizontal
+  %dt Name:
+  %dd= @todo.name
+  %dt Project:
+  %dd= @todo.project
+  %dt User:
+  %dd= @todo.user
+  %dt Important:
+  %dd= @todo.important
+  %dt Complete time:
+  %dd= @todo.complete_time
+  %dt Comment count:
+  %dd= @todo.comment_count

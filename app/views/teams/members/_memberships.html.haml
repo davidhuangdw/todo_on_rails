@@ -1,4 +1,4 @@
 %h4= role.pluralize.capitalize
 %ul.list-unstyled{class:"#{role}"}
-  - memberships.reject(&:new_record?).each do |membership|
+  - memberships.each do |membership|
     = render 'teams/members/membership', membership:membership
