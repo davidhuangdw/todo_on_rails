@@ -17,5 +17,7 @@
 //= require jquery.purr
 //= require best_in_place
 //= require best_in_place.purr
+////= require jquery-ui
+////= require best_in_place.jquery-ui
 //= require shared
 //= require_tree .

@@ -1,0 +1,9 @@
+%li.todo_item
+  -#= best_in_place todo, :completed, as: :checkbox
+  = best_in_place todo, :name, class:'todo_text'
+  = link_to "#{todo.comment_count} discuss", todo, class:'todo_detail'
+  - if todo.completed
+    %span.todo_detail= "(#{todo.complete_user.try(:username)}, #{time_ago_in_words(todo.complete_time)} ago)"
+  - else
+    = best_in_place todo, :user_id, as: :select, :collection => members, class:'todo_detail'
+

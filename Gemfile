@@ -1,4 +1,5 @@
 source "http://ruby.taobao.org"
+source 'https://rails-assets.org'
 # source 'https://rubygems.org'
 
 
@@ -73,3 +74,4 @@ end
 gem 'kaminari'
 gem 'chosen-rails'
 gem 'best_in_place'
+gem 'rails-assets-jquery-ui'

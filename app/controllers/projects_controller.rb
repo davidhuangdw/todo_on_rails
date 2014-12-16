@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:edit, :update, :destroy]
 
   def index
     @projects = Project.all
@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @project = Project.includes([todos:[:complete_user], team: :members]).find(params[:id])
     respond_with @project
   end
 

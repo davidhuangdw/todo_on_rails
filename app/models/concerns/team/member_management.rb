@@ -16,5 +16,8 @@ class Team
       memberships.create!(user:user,role:role)
       self
     end
+    def members_to_select
+      members.map{|u| {u.id => u.username} }.reduce({nil=>'nobody'},:merge!)
+    end
   end
 end

@@ -6,10 +6,22 @@
   = link_to edit_project_path(@project), :class => 'btn btn-primary' do
     %span.glyphicon.glyphicon-pencil
     Edit
-  %h1 Project: #{@project.name}
+  %h1
+    = link_to @project.team.name, @project.team
+    's Project:
+    = best_in_place @project, :name
 
-%dl.dl-horizontal
-  %dt Name:
-  %dd= @project.name
-  %dt Team:
-  %dd= @project.team
+= simple_form_for Todo.new, remote:true, html:{class:'form-inline'} do |f|
+  = f.input :project_id, input_html:{value:@project.id}, as: :hidden
+  = f.input :name, label:false
+  = f.button :submit
+
+%h1
+%h3 Tasks
+%ul.list-unstyled#incomplete_todos
+  = render partial:'projects/todo', collection:@project.incomplete_todos, locals:{members:@project.team.members_to_select}
+
+%h1
+%h3 Completed
+%ul.list-unstyled#complete_todos
+  = render partial:'projects/todo', collection:@project.complete_todos, locals:{members:@project.team.members_to_select}

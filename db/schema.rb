@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141216105411) do
+ActiveRecord::Schema.define(version: 20141216155808) do
 
   create_table "memberships", force: true do |t|
     t.integer  "team_id"
@@ -45,11 +45,13 @@ ActiveRecord::Schema.define(version: 20141216105411) do
     t.integer  "user_id"
     t.boolean  "important"
     t.datetime "complete_time"
-    t.integer  "comment_count", default: 0, null: false
+    t.integer  "comment_count",    default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "complete_user_id"
   end
 
+  add_index "todos", ["complete_user_id"], name: "index_todos_on_complete_user_id"
   add_index "todos", ["project_id"], name: "index_todos_on_project_id"
   add_index "todos", ["user_id"], name: "index_todos_on_user_id"
 
