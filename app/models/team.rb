@@ -7,6 +7,8 @@ class Team < ActiveRecord::Base
     has_many "#{role.pluralize}".to_sym, ->{where(memberships:{role:role})}, through: :memberships, source: :user
   end
 
+  has_many :projects, dependent: :destroy
+
   include MemberManagement
 end
 

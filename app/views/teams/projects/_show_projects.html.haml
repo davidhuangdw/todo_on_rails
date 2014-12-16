@@ -1,0 +1,10 @@
+%h3 Projects
+= simple_form_for @team.projects.build, html:{class:'form-inline'}, remote:true do |f|
+  = f.association :team, as: :hidden
+  = f.input :name, label:false
+  = f.submit 'Add', class:'btn btn-primary'
+
+%h1
+
+%ul.list-unstyled{id:"projects"}
+  = render partial:'teams/projects/project', collection:@team.projects.all
