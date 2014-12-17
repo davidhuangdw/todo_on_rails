@@ -1,3 +1,5 @@
+@import 'bootstrap-variables';
+
 .purr {
   position: fixed;
   top: 100px;
@@ -20,7 +22,14 @@
     border-radius: 25px;
   }
   .todo_text{
-    margin-left: 8px;
-    margin-right: 20px;
+    padding-left: 8px;
+    padding-right: 20px;
   }
 }
+
+.editable-icon{
+  color: $brand-warning;
+  font: 0.6em;
+  margin-left: 0.3em;
+}
+

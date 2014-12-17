@@ -1,9 +1,10 @@
-- title @project.name
+- title @project.html_title
 .page-header
   = link_to @project.team, :class => 'btn btn-default' do
     %span.glyphicon.glyphicon-list-alt
     Back to team
   %h1
+    Project:
     = best_in_place @project, :name
 
 = simple_form_for Todo.new, remote:true, html:{class:'form-inline'} do |f|

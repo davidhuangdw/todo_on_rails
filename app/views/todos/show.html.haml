@@ -1,3 +1,4 @@
+- title @todo.html_title
 .page-header
   = link_to @todo.project, :class => 'btn btn-default' do
     %span.glyphicon.glyphicon-list-alt
@@ -16,5 +17,5 @@
   = simple_form_for current_user.comments.build, url:comments_path, remote:true do |f|
     = f.association :todo, input_html:{value:@todo.id}, as: :hidden
     = f.association :user, as: :hidden
-    = f.input :content
+    = f.input :content, label: false
     = f.button :submit

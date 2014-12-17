@@ -10,5 +10,6 @@ class Team < ActiveRecord::Base
   has_many :projects, dependent: :destroy
 
   include MemberManagement
+  def html_title; "Team: #{name}" end
 end
 
