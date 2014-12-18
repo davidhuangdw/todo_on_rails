@@ -10,4 +10,11 @@ class ApplicationController < ActionController::Base
   def require_login
     redirect_to root_url, alert:'Require login first.' unless current_user
   end
+
+  def store_location(location=request.referer)
+    session[:return_to] = location
+  end
+  def redirect_back_or_default(default, *args)
+    redirect_to(session.delete(:return_to) || default, *args)
+  end
 end

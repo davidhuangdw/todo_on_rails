@@ -9,6 +9,7 @@ class UsersController
 
     def switch_team
       @user = current_user
+      store_location user_open_team_path(@user)
     end
   end
 end
