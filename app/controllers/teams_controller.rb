@@ -38,7 +38,7 @@ class TeamsController < ApplicationController
   def update
     respond_with do |format|
       if @team.update(team_params)
-        format.html { redirect_to @team, notice: 'Team was successfully updated.' }
+        format.html { redirect_back_or_default @team, notice: 'Team was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
