@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
 
     respond_with do |format|
       if @comment.save
+        track
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
         format.json { render json: @comment, status: :created }
       else
@@ -35,6 +36,7 @@ class CommentsController < ApplicationController
   def update
     respond_with do |format|
       if @comment.update(comment_params)
+        track
         format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
         format.json { head :no_content }
       else
@@ -47,6 +49,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
+    track
     respond_with do |format|
       format.html { redirect_to comments_url }
       format.json { head :no_content }
@@ -54,13 +57,15 @@ class CommentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:content, :todo_id, :user_id)
+    end
+
+    def track
+      track_event(@comment, @comment.todo.project_id)
     end
 end

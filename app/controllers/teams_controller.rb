@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   before_action :require_login
   before_action :set_team, only: [:edit, :update, :destroy]
+  include Eventable
 
   def index
     @teams = Team.order('created_at desc').page(params[:page])

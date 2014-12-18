@@ -1,0 +1,12 @@
+.page-header
+  %h1 Events
+
+- @events.each do |date, group|
+  %h3= date
+  - group.each do |project, events|
+    %h4 Project: #{project.name}
+    - for event in events
+      %p
+        = event.create_time
+        = link_to event.user.username, event.user
+        = render "events/#{event.trackable_type.underscore}/#{event.action}", event:event

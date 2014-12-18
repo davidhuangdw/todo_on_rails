@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
+  resources :events
+
   resources :comments
   resources :todos
   resources :projects
   resources :memberships
-  resources :teams
+  resources :teams do
+    get 'events'
+  end
 
   resources :sessions, only:[:new, :create, :destroy]
   get 'login' => "sessions#new", as: 'login'

@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :complete_todos, class_name:'Todo', foreign_key: :complete_user_id
   has_many :comments, dependent: :destroy
   belongs_to :current_team, class_name:'Team'
+  has_many :events
 
   include Validatable
   has_secure_password

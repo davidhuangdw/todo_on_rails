@@ -5,6 +5,7 @@ class Todo < ActiveRecord::Base
   belongs_to :user
   belongs_to :complete_user, class_name:'User'
   has_many :comments, dependent: :destroy
+  has_many :tracking_events, class_name:'Event', as: :trackable, dependent: :destroy
 
   def completed=(val)
     self.complete_time = (val && val!='false' ?

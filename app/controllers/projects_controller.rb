@@ -23,6 +23,7 @@ class ProjectsController < ApplicationController
 
     respond_with do |format|
       if @project.save
+        track
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created }
       else
@@ -36,6 +37,7 @@ class ProjectsController < ApplicationController
   def update
     respond_with do |format|
       if @project.update(project_params)
+        track
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { head :no_content }
       else
@@ -61,6 +63,10 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:name, :team_id)
+  end
+
+  def track
+    track_event(@project, @project.id)
   end
 end
 
