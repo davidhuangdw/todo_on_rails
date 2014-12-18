@@ -7,6 +7,7 @@
         %li.active=link_to 'Home', root_path
         %li=link_to 'users', users_path
         %li=link_to 'teams', teams_path
+        %li=link_to 'current_team', user_open_team_path(current_user) if current_user
       %ul.nav.navbar-nav.navbar-right
         - if current_user
           %li= link_to "Profile", current_user

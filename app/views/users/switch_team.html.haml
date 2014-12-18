@@ -1,0 +1,9 @@
+.page-header
+  %h1 Select Current Team:
+
+= simple_form_for @user do |f|
+  = f.association :current_team, collection:@user.teams
+  = f.button :submit
+
+
+= link_to 'Create a new team', new_team_path

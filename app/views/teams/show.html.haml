@@ -4,6 +4,8 @@
   = link_to teams_path, :class => 'btn btn-default' do
     %span.glyphicon.glyphicon-list-alt
     Back
+  - if current_user.try(:current_team_id) == @team.id
+    = link_to 'Change Current Team',  user_switch_team_path(current_user), class:'btn btn-default'
   %h1
     Team:
     = best_in_place @team, :name

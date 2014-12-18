@@ -13,8 +13,8 @@
       %tr
         %th Email
         %th Username
-        %th Password digest
-        %th Auth token
+        -#%th Password digest
+        -#%th Auth token
         %th Bio
         %th
         %th
@@ -24,8 +24,8 @@
         %tr
           %td=link_to user.email, user
           %td= user.username
-          %td= user.password_digest
-          %td= user.auth_token
+          -#%td= user.password_digest
+          -#%td= user.auth_token
           %td= user.bio
           -#%td= link_to 'Show', user
           %td= link_to 'Edit', edit_user_path(user)

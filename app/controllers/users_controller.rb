@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  include CurrentTeam
 
   def index
     @users = User.order('created_at desc').page(params[:page])
@@ -59,6 +60,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :username, :bio)
+      params.require(:user)
+          .permit(:email, :password, :password_confirmation, :username, :bio, :current_team_id)
     end
 end
