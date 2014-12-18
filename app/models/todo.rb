@@ -1,4 +1,6 @@
 class Todo < ActiveRecord::Base
+  validates :name, presence:true
+
   belongs_to :project
   belongs_to :user
   belongs_to :complete_user, class_name:'User'
@@ -14,5 +16,8 @@ class Todo < ActiveRecord::Base
   end
   def html_id; "todo#{id}" end
   def html_title; html_id end
+  def html_parent_list_class
+    completed ? "completed_todos" : "incomplete_todos"
+  end
 
 end

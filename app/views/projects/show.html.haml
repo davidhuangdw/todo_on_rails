@@ -12,12 +12,16 @@
   = f.input :name, label:false
   = f.button :submit
 
-%h1
-%h3 Tasks
-%ul.list-unstyled#incomplete_todos
-  = render partial:'projects/todo', collection:@project.incomplete_todos, locals:{members:@project.team.members_to_select}
 
 %h1
-%h3 Completed
-%ul.list-unstyled#complete_todos
-  = render partial:'projects/todo', collection:@project.complete_todos, locals:{members:@project.team.members_to_select}
+
+.row
+  .col-sm-6
+    %h3 Tasks
+    %ul.list-unstyled#incomplete_todos
+      = render partial:'projects/todo', collection:@project.incomplete_todos, locals:{members:@project.team.members_to_select}
+  .col-sm-6
+    %h3 Completed
+    %ul.list-unstyled#complete_todos
+      = render partial:'projects/todo', collection:@project.complete_todos, locals:{members:@project.team.members_to_select}
+

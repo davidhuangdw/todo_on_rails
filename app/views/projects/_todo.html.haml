@@ -1,5 +1,5 @@
 %li.todo_item{id:todo.html_id}
-  = best_in_place todo, :completed, as: :checkbox
+  = best_in_place todo, :completed, as: :checkbox, class:'todo_check'
   = best_in_place todo, :name, class:'todo_text'
   = link_to "#{todo.comments_count} discuss", todo, class:'todo_detail'
   - if todo.completed
