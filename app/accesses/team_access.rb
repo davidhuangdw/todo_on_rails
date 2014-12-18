@@ -1,0 +1,2 @@
+class TeamAccess < ApplicationAccess
+end

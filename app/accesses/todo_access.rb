@@ -1,0 +1,2 @@
+class TodoAccess < ApplicationAccess
+end

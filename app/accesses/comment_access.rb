@@ -1,0 +1,2 @@
+class CommentAccess < ApplicationAccess
+end
