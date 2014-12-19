@@ -12,8 +12,11 @@ class Team < ActiveRecord::Base
   include MemberManagement
   def html_title; "Team: #{name}" end
 
-  def all_members_events
-    members.map(&:events).reduce([], :+)
+  def all_projects_events
+    projects.map(&:events).reduce([], :+)
   end
+  # def all_members_events
+  #   members.map(&:events).reduce([], :+)
+  # end
 end
 
